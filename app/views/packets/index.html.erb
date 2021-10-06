@@ -1,31 +1,68 @@
+
 <p id="notice"><%= notice %></p>
-
-<h1>Packets</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Weight</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @packets.each do |packet| %>
-      <tr>
-        <td><%= packet.name %></td>
-        <td><%= packet.weight %></td>
-        <td><%= packet.status %></td>
-        <td><%= link_to 'Show', packet %></td>
-        <td><%= link_to 'Edit', edit_packet_path(packet) %></td>
-        <td><%= link_to 'Destroy', packet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Packet', new_packet_path %>
+<div id="wrapper">
+    <%= render partial: 'shared/navigation' %>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <%= render partial: 'shared/top_navigation' %>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4">Últimas Actividades</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Entregas</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <%= link_to 'Nuevo Paquete', new_packet_path, class: 'btn btn-primary col-2 offset-9' %>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Status</th>
+                                        <th>Peso [kg]</th>
+                                        <th>Fecha</th>
+                                        <th>ID Producto</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <% @packets.each do |packet| %>
+                                    <tr>
+                                        <td><img class="rounded-circle me-2" width="30" height="30" src=<%= asset_path "creative_commons/open_box.png"%>><%= packet.name %></td>
+                                        <td><%= packet.status %></td>
+                                        <td><%= packet.weight %></td>
+                                        <td><%= packet.updated_at %></td>
+                                        <td><%= packet.id %></td>
+                                        <td class="text-center">
+                                        <%= link_to edit_packet_path(packet)  do %>
+                                            <i class="fa fa-pencil text-primary"></i>
+                                        <% end %>
+                                        <%= link_to packet, method: :delete, data: { confirm: 'Seguro deseas BORRAR el paquete?' }  do %>
+                                            <i class="fa fa-trash text-danger"></i>
+                                        <% end %>
+                                        </td>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td><strong>Nombre</strong></td>
+                                        <td><strong>Status</strong></td>
+                                        <td><strong>Peso</strong></td>
+                                        <td><strong>Fecha</strong></td>
+                                        <td><strong>ID Producto</strong></td>
+                                        <td><strong>Acciones</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%= render partial: 'shared/footer' %>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
