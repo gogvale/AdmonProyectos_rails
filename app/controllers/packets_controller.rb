@@ -9,6 +9,7 @@ class PacketsController < ApplicationController
 
   # GET /packets/1 or /packets/1.json
   def show
+    redirect_to packets_path
   end
 
   # GET /packets/new
