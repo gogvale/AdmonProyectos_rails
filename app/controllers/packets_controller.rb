@@ -24,7 +24,7 @@ class PacketsController < ApplicationController
   # POST /packets or /packets.json
   def create
     @packet = Packet.new(packet_params)
-
+    @packet.deliverer = current_user
     respond_to do |format|
       if @packet.save
         format.html { redirect_to @packet, notice: "Packet was successfully created." }

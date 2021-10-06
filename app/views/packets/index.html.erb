@@ -20,6 +20,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
+                                        <th>Entregador</th>
                                         <th>Status</th>
                                         <th>Peso [kg]</th>
                                         <th>Fecha</th>
@@ -32,6 +33,7 @@
                                     <% @packets.each do |packet| %>
                                     <tr>
                                         <td><img class="rounded-circle me-2" width="30" height="30" src=<%= asset_path "creative_commons/open_box.png"%>><%= packet.name %></td>
+                                        <td><%= packet.deliverer.name %></td>
                                         <td><%= packet.status %></td>
                                         <td><%= packet.weight %></td>
                                         <td><%= packet.updated_at %></td>
@@ -50,6 +52,7 @@
                                 <tfoot>
                                     <tr>
                                         <td><strong>Nombre</strong></td>
+                                        <td><strong>Entregador</strong></td>
                                         <td><strong>Status</strong></td>
                                         <td><strong>Peso</strong></td>
                                         <td><strong>Fecha</strong></td>
