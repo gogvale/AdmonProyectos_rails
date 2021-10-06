@@ -22,7 +22,7 @@
                                         <th>Nombre</th>
                                         <th>Entregador</th>
                                         <th>Status</th>
-                                        <th>Peso [kg]</th>
+                                        <th>Peso</th>
                                         <th>Fecha</th>
                                         <th>ID Producto</th>
                                         <th>Acciones</th>
@@ -35,7 +35,7 @@
                                         <td><img class="rounded-circle me-2" width="30" height="30" src=<%= asset_path "creative_commons/open_box.png"%>><%= packet.name %></td>
                                         <td><%= packet.deliverer.name %></td>
                                         <td><%= packet.status %></td>
-                                        <td><%= packet.weight %></td>
+                                        <td><%= packet.weight %> kg</td>
                                         <td><%= packet.updated_at %></td>
                                         <td><%= packet.id %></td>
                                         <td class="text-center">

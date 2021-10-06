@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :weight %>
-    <%= form.number_field :weight %>
+    <%= form.number_field :weight, step: 0.1, min: 0.1 %>
   </div>
 
   <div class="field">

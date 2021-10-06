@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_173803) do
+ActiveRecord::Schema.define(version: 2021_10_06_180218) do
 
   create_table "packets", force: :cascade do |t|
     t.string "name"
-    t.integer "weight"
+    t.float "weight"
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
