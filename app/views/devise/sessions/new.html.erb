@@ -1,26 +1,42 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-12 col-xl-10">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-flex">
+                            <div class="flex-grow-1 bg-login-image" style="background-image: url(<%= asset_path 'dogs/Login.jpeg'%>);"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h4 class="text-dark mb-4">Bienvenido!</h4>
+                                </div>
+                                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                    <div class="mb-3">
+                                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-user", id: "exampleInputEmail", placeholder: "Correo", required: true %>
+                                    </div>
+                                    <div class="mb-3">
+                                      <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-user", id: "exampleInputPassword",  placeholder: "Contraseña", required: true %>
+                                    <div class="mb-3">
+                                        <div class="custom-control custom-checkbox small">
+                                          <% if devise_mapping.rememberable? %>
+                                            <div class="form-check">
+                                              <%= f.check_box :remember_me, class: "form-check-input custom-control-input", id: "formCheck-1" %>
+                                              <%= f.label :remember_me, class: "form-check-label custom-control-label" %>
+                                            </div>
+                                          <% end %>
+                                        </div>
+                                    </div>
+                                    <%= f.submit "Login", class: "btn btn-primary d-block btn-user w-100" %>
+                                    <hr>
+                                <% end %>
+                                <%= render "devise/shared/links" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

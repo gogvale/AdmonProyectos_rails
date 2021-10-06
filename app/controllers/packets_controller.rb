@@ -1,5 +1,6 @@
 class PacketsController < ApplicationController
   before_action :set_packet, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /packets or /packets.json
   def index
