@@ -4,7 +4,7 @@ class PacketsController < ApplicationController
 
   # GET /packets or /packets.json
   def index
-    @packets = Packet.all
+    @packets = Packet.all.from_user(params[:user_id])
   end
 
   # GET /packets/1 or /packets/1.json

@@ -7,4 +7,5 @@ class Packet < ApplicationRecord
     cancelado: 3,
     por_enviar: 4
   }
+  scope :from_user, ->(id) { where(user_id: id) if id }
 end

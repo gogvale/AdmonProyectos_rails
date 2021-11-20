@@ -7,6 +7,10 @@
             <%= render partial: 'shared/top_navigation' %>
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">Últimas Actividades</h3>
+                <% if params[:user_id] %>
+                    <h2>&lt; <%= link_to 'Return to dashboard', packets_path %></h2>
+                <% end %>
+                
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Entregas</p>
@@ -33,7 +37,7 @@
                                     <% @packets.each do |packet| %>
                                     <tr>
                                         <td><img class="rounded-circle me-2" width="30" height="30" referrerpolicy="no-referrer" src=<%= packet.deliverer.profile_pic_url %>><%= packet.name %></td>
-                                        <td><%= packet.deliverer.name %></td>
+                                        <td><%= link_to packet.deliverer.name, user_packets_path(packet.deliverer) %></td>
                                         <td><%= packet.status %></td>
                                         <td><%= packet.weight %> kg</td>
                                         <td><%= packet.updated_at %></td>
